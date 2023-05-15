@@ -144,3 +144,35 @@ a:hover {
   z-index: 9999; /* чтобы кнопка была поверх других элементов */
 }
 
+.menu-list {
+  position: fixed; /* фиксированная позиция (слева) */
+  top: 0;
+  left: -200px; /* начальное скрытие */
+  width: 200px;
+  height: 100%;
+  background-color: #f8f9fa;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+  transition: left 0.3s ease-in-out; /* плавное появление/скрытие */
+  z-index: 9998; /* ниже кнопки */
+}
+
+.menu-list.show {
+  left: 0; /* отображение списка */
+}
+
+.menu-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-list li {
+  margin-bottom: 10px;
+}
+
+.menu-list a {
+  color: #000;
+  text-decoration: none;
+  font-size: 18px;
+}
