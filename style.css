@@ -1,19 +1,40 @@
-
-table {
-	border-collapse: collapse;
-	margin: 20px;
+.piece {
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  font-size: 60px;
+  text-align: center;
+  line-height: 80px;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
 }
 
-td {
-	border: 1px solid black;
-	height: 50px;
-	width: 50px;
-	text-align: center;
-	font-size: 40px;
-	cursor: pointer;
+.x-piece {
+  color: #ff6961;
+  animation-name: move-x;
 }
 
-button {
-	display: block;
-	margin: 20px auto;
+.o-piece {
+  color: #77dd77;
+  animation-name: move-o;
+}
+
+@keyframes move-x {
+  from {
+    transform: translate(-50px, -50px);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes move-o {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
