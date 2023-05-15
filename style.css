@@ -1,0 +1,131 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #f6f6f6;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
+  animation-fill-mode: both;
+}
+
+h1 {
+  margin: 0;
+  font-size: 36px;
+  font-weight: normal;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+section.block {
+  background-color: #fff;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+section.block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
+  animation-fill-mode: both;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Анимации */
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+}
+
+.fadeInUp {
+  animation-name: fadeInUp;
+}
+
+.fadeInDown {
+  animation-name: fadeInDown;
+}
+
+/* Слайдер */
+
+.slider-container {
+  overflow: hidden;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.slider {
+  display: flex;
+  flex-wrap: nowrap;
+  transform: translateX(0);
+  transition: all 0.5s ease-in-out;
+}
+
+.slide {
+  flex: 1 0 33.33%;
+  padding: 20px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+.slide:last-child {
+  margin-right: 0;
+}
+
+.slide a {
+  color: #333;
+  text-decoration: none;
+}
+
+.slide a:hover {
+  text-decoration: underline;
+}
+
+.slide.active {
+  transform: translateX(-33.33%);
+}
