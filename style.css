@@ -1,40 +1,55 @@
-.piece {
-  position: absolute;
-  height: 80px;
-  width: 80px;
-  font-size: 60px;
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
   text-align: center;
-  line-height: 80px;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
 }
 
-.x-piece {
-  color: #ff6961;
-  animation-name: move-x;
+.game-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
 }
 
-.o-piece {
-  color: #77dd77;
-  animation-name: move-o;
+.player {
+  width: 200px;
+  height: 200px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  margin: 20px;
+  text-align: center;
 }
 
-@keyframes move-x {
-  from {
-    transform: translate(-50px, -50px);
-  }
-  to {
-    transform: translate(0, 0);
-  }
+#player1 {
+  border: 5px solid red;
 }
 
-@keyframes move-o {
-  from {
-    transform: translateY(-50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+#player2 {
+  border: 5px solid blue;
+}
+
+button {
+  font-size: 18px;
+  padding: 10px 20px;
+  margin-top: 30px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+#game-board {
+  width: 500px;
+  height: 500px;
+  margin-top: 50px;
+  display: none;
+  border: 5px solid black;
 }
