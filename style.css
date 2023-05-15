@@ -130,20 +130,6 @@ a:hover {
   transform: translateX(-33.33%);
 }
 
-#menu-toggle {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  position: fixed; /* фиксированная позиция */
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  z-index: 9999; /* чтобы кнопка была поверх других элементов */
-}
-
 .menu-list {
   position: fixed; /* фиксированная позиция (слева) */
   top: 0;
@@ -176,3 +162,5 @@ a:hover {
   text-decoration: none;
   font-size: 18px;
 }
+
+
