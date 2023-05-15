@@ -1,66 +1,19 @@
-let board = ['', '', '', '', '', '', '', '', ''];
-let currentPlayer = 'X';
-let gameOver = false;
+// Ожидание загрузки документа перед выполнением JavaScript-кода
+document.addEventListener("DOMContentLoaded", () => {
+  // Получаем HTML-элементы, с которыми мы будем работать
+  const startBtn = document.getElementById("start-game-btn");
+  const gameBoard = document.getElementById("game-board");
+  const score1Elem = document.getElementById("score1");
+  const score2Elem = document.getElementById("score2");
 
-function updateBoard() {
-    for (let i = 0; i < board.length; i++) {
-        document.getElementById(`cell-${i}`).innerText = board[i];
-    }
-}
+  let currentPlayer = null;
+  let player1Score = 0;
+  let player2Score = 0;
 
-function handleClick(index) {
-    if (board[index] === '' && !gameOver) {
-        board[index] = currentPlayer;
-        updateBoard();
-        checkWin();
-        changeTurn();
-    }
-}
+  // Функция, которая запускает игру
+  function startGame() {
+    // Предотвращаем повторное нажатие кнопки "Start Game"
+    startBtn.disabled = true;
 
-function changeTurn() {
-    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-    document.body.className = `player-${currentPlayer}`;
-}
-
-function checkWin() {
-    const winConditions = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6]
-    ];
-
-    for (let i = 0; i < winConditions.length; i++) {
-        const [a, b, c] = winConditions[i];
-        if (board[a] === board[b] && board[b] === board[c] && board[a] !== '') {
-            gameOver = true;
-            alert(`${currentPlayer} победил!`);
-            return;
-        }
-    }
-
-    if (!board.includes('')) {
-        gameOver = true;
-        alert('Ничья!');
-    }
-}
-
-function reset() {
-    board = ['', '', '', '', '', '', '', '', ''];
-    currentPlayer = 'X';
-    gameOver = false;
-    updateBoard();
-    document.body.className = '';
-}
-
-// Добавляем обработчик клика на каждую ячейку таблицы
-for (let i = 0; i < 9; i++) {
-    const cell = document.getElementById(`cell-${i}`);
-    cell.addEventListener('click', () => handleClick(i));
-}
-
-updateBoard();
+    // Отображаем игровое поле
+    gameBoard.style
