@@ -12,8 +12,8 @@ body {
 }
 
 button {
-  font-size: 2rem;
-  padding: 1.5rem 3rem;
+  padding: 10px 20px;
+  font-size: 18px;
   border-radius: 50px;
   color: #fff;
   background-color: #007bff;
