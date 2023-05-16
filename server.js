@@ -8,17 +8,19 @@ wss.on('connection', (ws) => {
 
 	// Обработчик получения сообщения от клиента
 	ws.on('message', (message) => {
-		console.log(`Получено сообщение: ${message}`);
+		const { username, messageText } = JSON.parse(message);
+		console.log(`Получено сообщение от ${username}: ${messageText}`);
 
-		// Рассылка сообщения всем клиентам, кроме отправителя
+		// Отправка сообщения всем клиентам, кроме отправителя
 		wss.clients.forEach((client) => {
 			if (client !== ws && client.readyState === WebSocket.OPEN) {
-				client.send(message);
+				client.send(JSON.stringify({ username, messageText }));
 			}
 		});
 	});
 
+	// Обработчик закрытия соединения клиента
 	ws.on('close', () => {
-console.log('Клиент отключился');
-});
+		console.log('Клиент отключился');
+	});
 });
