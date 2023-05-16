@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Мой сайт с кнопками</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<meta charset="UTF-8">
+	<title>Memory Game</title>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<div class="container">
-		<button id="main-btn">Нажми меня</button>
-	</div>
-	
-	<div class="container">
-	  <div class="text-block">
-	    Ваш текст здесь
-	  </div>
+		<div class="score">Score: 0</div>
+		<div class="board">
+			<div class="card" data-value="1"></div>
+			<div class="card" data-value="2"></div>
+			<div class="card" data-value="3"></div>
+			<div class="card" data-value="4"></div>
+			<div class="card" data-value="1"></div>
+			<div class="card" data-value="2"></div>
+			<div class="card" data-value="3"></div>
+			<div class="card" data-value="4"></div>
+		</div>
+		<button class="start-button">Start Game</button>
 	</div>
 
 	<script src="script.js"></script>
