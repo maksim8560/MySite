@@ -1,69 +1,42 @@
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Анимация и изображение</title>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
 
-      #animation-container {
-        width: 100px;
-        height: 100px;
-        position: relative;
-      }
+<div class="modal" id="name-modal">
+  <div class="modal-content">
+    <h2>Welcome to the Chat!</h2>
+    <p>Please enter your name:</p>
+    <input type="text" id="name-input" placeholder="Enter your name...">
+    <button id="enter-button">Enter</button>
+  </div>
+</div>
 
-      #animation {
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        background-color: blue;
-        position: absolute;
-        top: 0;
-        left: 0;
-        animation-name: spin;
-        animation-duration: 2s;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-      }
-
-      @keyframes spin {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      #image {
-        display: none;
-        max-width: 50%;
-        max-height: 50%;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="animation-container">
-      <div id="animation"></div>
+<div class="chat-container">
+  <div class="message-container"></div>
+  <div class="input-container">
+    <input type="text" id="message-input" placeholder="Type your message...">
+    <button id="send-button">Send</button>
+    <div class="emoji-container">
+      <span class="emoji">😀</span>
+      <span class="emoji">😁</span>
+      <span class="emoji">😂</span>
+      <span class="emoji">😃</span>
+      <span class="emoji">😄</span>
+      <span class="emoji">😅</span>
+      <span class="emoji">😆</span>
+      <span class="emoji">😉</span>
+      <span class="emoji">😊</span>
+      <span class="emoji">😋</span>
     </div>
-    <button id="animation-button">Нажми на меня</button>
-    <img id="image" src="https://i.imgur.com/OahWkOd.jpg" alt="Изображение">
-    <script>
-      const button = document.getElementById("animation-button");
-      const animation = document.getElementById("animation");
-      const image = document.getElementById("image");
+  </div>
+</div>
 
-      button.addEventListener("click", () => {
-        animation.style.display = "none";
-        image.style.display = "block";
-      });
-    </script>
-    <title>ТЫ ГЕЙ</title>
-  </body>
+<script src="app.js"></script>
+
+</body>
 </html>
