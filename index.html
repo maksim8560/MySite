@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>Memory Game</title>
-	<link rel="stylesheet" href="style.css">
-</head>
-<body>
-	<div class="container">
-		<div class="score">Score: 0</div>
-		<div class="board">
-			<div class="card" data-value="1"></div>
-			<div class="card" data-value="2"></div>
-			<div class="card" data-value="3"></div>
-			<div class="card" data-value="4"></div>
-			<div class="card" data-value="1"></div>
-			<div class="card" data-value="2"></div>
-			<div class="card" data-value="3"></div>
-			<div class="card" data-value="4"></div>
-		</div>
-		<button class="start-button">Start Game</button>
-	</div>
 
-	<script src="script.js"></script>
+<head>
+  <title>Медиаплеер</title>
+  <!-- Подключаем стили -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Создаем контейнер для плеера -->
+  <div class="player-container">
+    <!-- Вставляем видео по ссылке -->
+    <video src="https://example.com/video.mp4"></video>
+    <!-- Создаем кнопки управления -->
+    <button id="play-pause-button">Воспроизвести/Приостановить</button>
+    <input id="volume-slider" type="range" min="0" max="1" step="0.1" value="1">
+    <button id="mute-unmute-button">Выключить/Включить звук</button>
+  </div>
+
+  <!-- Подключаем скрипты -->
+  <script src="script.js"></script>
 </body>
+
 </html>
