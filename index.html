@@ -36,6 +36,7 @@
 
 		form {
 			display: flex;
+			flex-wrap: wrap;
 			margin-top: 10px;
 		}
 
@@ -46,10 +47,12 @@
 			border: none;
 			box-shadow: none;
 			background-color: #f1f1f1;
+			margin-right: 10px;
+			margin-bottom: 10px;
 		}
 
 		button[type=submit] {
-			margin-left: 10px;
+			margin-left: auto;
 			padding: 5px 10px;
 			border-radius: 5px;
 			border: none;
@@ -67,6 +70,7 @@
 <body>
 	<div id="chat-container"></div>
 	<form id="message-form">
+		<input type="text" name="username" placeholder="Введите ваше имя...">
 		<input type="text" name="message" placeholder="Введите сообщение...">
 		<button type="submit">Отправить</button>
 	</form>
@@ -96,25 +100,29 @@
 		messageForm.addEventListener('submit', (event) => {
 			event.preventDefault();
 
+			const usernameInput = messageForm.querySelector('input[name="username"]');
 			const messageInput = messageForm.querySelector('input[name="message"]');
+
+			const username = usernameInput.value;
 			const messageText = messageInput.value;
 
 			// Отправка сообщения на сервер
-			socket.send(messageText);
+			socket.send(JSON.stringify({ username, messageText }));
 
 			// Добавление сообщения в контейнер
-			addMessageToContainer(messageText);
+			addMessageToContainer(`${username}: ${messageText}`);
 
-			// Очистка поля ввода
+			// Очистка полей ввода
+			usernameInput.value = '';
 			messageInput.value = '';
 		});
 
 		// Обработчик получения сообщения от сервера
 		socket.addEventListener('message', (event) => {
-			const receivedMessage = event.data;
+			const { username, messageText } = JSON.parse(event.data);
 
 			// Добавление сообщения в контейнер с меткой "other-user"
-			addMessageToContainer(receivedMessage, true);
+			addMessageToContainer(`${username}: ${messageText}`, true);
 		});
 	</script>
 </body>
