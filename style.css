@@ -1,19 +1,25 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
+  text-align: center;
 }
 
 button {
-	padding: 16px 32px;
-	border-radius: 50px;
-	font-size: 24px;
-	color: #fff;
-	background-color: #007bff;
-	border: none;
-	cursor: pointer;
-	animation: pulse 2s infinite;
+  font-size: 2rem;
+  padding: 1.5rem 3rem;
+  border-radius: 50px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  cursor: pointer;
+  animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
