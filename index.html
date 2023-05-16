@@ -3,29 +3,93 @@
 <head>
 	<title>Онлайн-чат</title>
 	<style type="text/css">
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+			background-color: #f1f1f1;
+		}
+
 		#chat-container {
 			height: 400px;
 			overflow-y: scroll;
+			display: flex;
+			flex-direction: column;
+			padding: 10px;
+			background-color: #fff;
+		}
+
+		.chat-message {
+			margin-bottom: 10px;
+			padding: 5px;
+			border-radius: 10px;
+			max-width: 80%;
+			align-self: flex-start;
+			background-color: #dcdcdc;
+		}
+
+		.chat-message.other-user {
+			align-self: flex-end;
+			background-color: #06c;
+			color: #fff;
+		}
+
+		form {
+			display: flex;
+			margin-top: 10px;
+		}
+
+		input[type=text] {
+			flex-grow: 1;
+			padding: 5px;
+			border-radius: 5px;
+			border: none;
+			box-shadow: none;
+			background-color: #f1f1f1;
+		}
+
+		button[type=submit] {
+			margin-left: 10px;
+			padding: 5px 10px;
+			border-radius: 5px;
+			border: none;
+			box-shadow: none;
+			background-color: #06c;
+			color: #fff;
+			cursor: pointer;
+		}
+
+		button[type=submit]:hover {
+			background-color: #003c6e;
 		}
 	</style>
 </head>
 <body>
 	<div id="chat-container"></div>
 	<form id="message-form">
-		<input type="text" name="message">
+		<input type="text" name="message" placeholder="Введите сообщение...">
 		<button type="submit">Отправить</button>
 	</form>
 
 	<script type="text/javascript">
+		const socket = new WebSocket('ws://localhost:3000');
 		const chatContainer = document.querySelector('#chat-container');
 		const messageForm = document.querySelector('#message-form');
 
 		// Функция добавления сообщения в контейнер
-		function addMessageToContainer(message) {
+		function addMessageToContainer(message, isOtherUser) {
 			const messageElement = document.createElement('div');
 			messageElement.innerText = message;
+			messageElement.classList.add('chat-message');
+
+			if (isOtherUser) {
+				messageElement.classList.add('other-user');
+			}
 
 			chatContainer.appendChild(messageElement);
+
+			// Автопрокрутка до последнего сообщения
+			chatContainer.scrollTop = chatContainer.scrollHeight;
 		}
 
 		// Обработчик отправки сообщения
@@ -35,8 +99,8 @@
 			const messageInput = messageForm.querySelector('input[name="message"]');
 			const messageText = messageInput.value;
 
-			// Отправка сообщения на сервер и получение ответа
-			// ...
+			// Отправка сообщения на сервер
+			socket.send(messageText);
 
 			// Добавление сообщения в контейнер
 			addMessageToContainer(messageText);
@@ -44,41 +108,14 @@
 			// Очистка поля ввода
 			messageInput.value = '';
 		});
-		const socket = new WebSocket('ws://localhost:3000');
 
-// Обработчик соединения с сервером
-socket.addEventListener('open', (event) => {
-    console.log('Соединение установлено');
+		// Обработчик получения сообщения от сервера
+		socket.addEventListener('message', (event) => {
+			const receivedMessage = event.data;
 
-    // Отправка начального сообщения после подключения к серверу
-    socket.send('Привет, я новый пользователь');
-});
-
-// Обработчик получения сообщения от сервера
-socket.addEventListener('message', (event) => {
-    const receivedMessage = event.data;
-    console.log(`Получено сообщение: ${receivedMessage}`);
-
-    // Добавление сообщения в контейнер
-    addMessageToContainer(receivedMessage);
-});
-
-// Обработчик ошибки подключения к серверу
-socket.addEventListener('error', (event) => {
-    console.error('Ошибка подключения:', event);
-});
-
-// Обработчик закрытия соединения с сервером
-socket.addEventListener('close', (event) => {
-    console.log('Соединение закрыто');
-});
-
-// Функция отправки сообщения на сервер
-function sendMessageToServer(message) {
-    socket.send(message);
-}
-
-
+			// Добавление сообщения в контейнер с меткой "other-user"
+			addMessageToContainer(receivedMessage, true);
+		});
 	</script>
 </body>
 </html>
