@@ -1,65 +1,44 @@
-html,
-body {
-  height: 100%;
-}
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.score {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.board {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  height: 100vh; /* задаем высоту контейнера, чтобы он заполнял все доступное пространство */
 }
 
-.text-block {
-  text-align: center; /* выравниваем текст по центру блока */
+.card {
+  width: 100px;
+  height: 100px;
+  background-color: #ddd;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
 }
 
-button {
-  margin-right: 50px;
+.card.flipped {
+  background-color: #fff;
+}
+
+.start-button {
   padding: 10px 20px;
   font-size: 18px;
-  border-radius: 50px;
+  font-weight: bold;
+  background-color: #4CAF50;
   color: #fff;
-  background-color: #007bff;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-	0% { transform: scale(1); }
-	50% { transform: scale(1.05); }
-	100% { transform: scale(1); }
-}
-
-.btn-group {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 40%;
-	margin: auto;
-	margin-top: 20px;
-}
-
-.btn-group button {
-	padding: 12px 24px;
-	border-radius: 10px;
-	font-size: 18px;
-	color: #fff;
-	background-color: #007bff;
-	border: none;
-	cursor: pointer;
-}
-
-#result-text {
-	display: none;
-	text-align: center;
-	font-size: 36px;
-	color: #007bff;
-	margin-top: 20px;
 }
