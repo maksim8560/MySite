@@ -1,14 +1,27 @@
-/* Стили для контейнера плеера */
-.player-container {
-  position: relative;
+body {
+  font-family: Arial, sans-serif;
 }
 
-/* Стили для видео */
-video {
-  width: 100%;
+h1 {
+  text-align: center;
 }
 
-/* Стили для кнопок управления */
-button {
-  margin: 10px;
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+input[type="file"] {
+  margin-bottom: 10px;
+}
+
+button[type="submit"] {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
