@@ -7,8 +7,16 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 .container {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* задаем высоту контейнера, чтобы он заполнял все доступное пространство */
+}
+
+.text-block {
+  text-align: center; /* выравниваем текст по центру блока */
 }
 
 button {
