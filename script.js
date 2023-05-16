@@ -1,32 +1,24 @@
-// Получаем элементы плеера
-const videoElement = document.querySelector('video');
-const playPauseButton = document.querySelector('#play-pause-button');
-const volumeSlider = document.querySelector('#volume-slider');
-const muteUnmuteButton = document.querySelector('#mute-unmute-button');
+const form = document.querySelector('#image-form');
+const input = document.querySelector('#image-input');
 
-// Обработчик нажатия на кнопку воспроизведения/приостановления
-playPauseButton.addEventListener('click', () => {
-  if (videoElement.paused) {
-    videoElement.play();
-    playPauseButton.textContent = 'Приостановить';
-  } else {
-    videoElement.pause();
-    playPauseButton.textContent = 'Воспроизвести';
-  }
-});
-
-// Обработчик изменения громкости
-volumeSlider.addEventListener('input', () => {
-  videoElement.volume = volumeSlider.value;
-});
-
-// Обработчик нажатия на кнопку выключения/включения звука
-muteUnmuteButton.addEventListener('click', () => {
-  if (videoElement.muted) {
-    videoElement.muted = false;
-    muteUnmuteButton.textContent = 'Выключить звук';
-  } else {
-    videoElement.muted = true;
-    muteUnmuteButton.textContent = 'Включить звук';
+// обработчик отправки формы
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  
+  const file = input.files[0];
+  
+  if (file) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    
+    // обработчик завершения чтения файла
+    reader.onload = () => {
+      const img = new Image();
+      img.src = reader.result;
+      document.body.appendChild(img);
+      
+      // добавление в LocalStorage
+      localStorage.setItem('image', reader.result);
+    }
   }
 });
