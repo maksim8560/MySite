@@ -1,40 +1,79 @@
-const mainBtn = document.getElementById('main-btn');
-const container = document.querySelector('.container');
+const cards = document.querySelectorAll('.card');
+const startButton = document.querySelector('.start-button');
+const scoreDisplay = document.querySelector('.score');
 
-mainBtn.addEventListener('click', function() {
-	const btnGroup = document.createElement('div');
-	btnGroup.classList.add('btn-group');
+let hasFlippedCard = false;
+let lockBoard = false;
+let firstCard, secondCard;
+let score = 0;
 
-	const yesBtn = document.createElement('button');
-	yesBtn.innerText = 'Я ГЕЙ';
+function flipCard() {
+  if (lockBoard) return;
+  if (this === firstCard) return;
 
-	const noBtn = document.createElement('button');
-	noBtn.innerText = 'Я НЕ ГЕЙ!';
+  this.classList.add('flipped');
 
-	btnGroup.appendChild(yesBtn);
-	btnGroup.appendChild(noBtn);
+  if (!hasFlippedCard) {
+    // Первая карта
+    hasFlippedCard = true;
+    firstCard = this;
 
-	container.appendChild(btnGroup);
+    return;
+  }
 
-	mainBtn.style.display = 'none';
+  // Вторая карта
+  secondCard = this;
 
-	yesBtn.addEventListener('click', function() {
-		btnGroup.style.display = 'none';
+  checkForMatch();
+}
 
-		const resultText = document.createElement('div');
-		resultText.id = 'result-text';
-		resultText.innerText = 'Я ЗНАЛ!!!';
+function checkForMatch() {
+  let isMatch = firstCard.dataset.value === secondCard.dataset.value;
 
-		container.appendChild(resultText);
-	});
+  isMatch ? disableCards() : unflipCards();
+}
 
-	noBtn.addEventListener('click', function() {
-		btnGroup.style.display = 'none';
+function disableCards() {
+  firstCard.removeEventListener('click', flipCard);
+  secondCard.removeEventListener('click', flipCard);
 
-		const resultText = document.createElement('div');
-		resultText.id = 'result-text';
-		resultText.innerText = 'ТЫ ГЕЙ :) ХЫ-ХЫ-ХЫ';
+  resetBoard();
 
-		container.appendChild(resultText);
-	});
-});
+  score++;
+  scoreDisplay.innerHTML = `Score: ${score}`;
+}
+
+function unflipCards() {
+  lockBoard = true;
+
+  setTimeout(() => {
+    firstCard.classList.remove('flipped');
+    secondCard.classList.remove('flipped');
+
+    resetBoard();
+  }, 1000);
+}
+
+function resetBoard() {
+  [hasFlippedCard, lockBoard] = [false, false];
+  [firstCard, secondCard] = [null, null];
+}
+
+function shuffleCards() {
+  cards.forEach(card => {
+    let randomPos = Math.floor(Math.random() * 8);
+    card.style.order = randomPos;
+  });
+}
+
+function startGame() {
+  shuffleCards();
+
+  cards.forEach(card => {
+    card.addEventListener('click', flipCard);
+  });
+
+  startButton.style.display = 'none';
+}
+
+startButton.addEventListener('click', startGame);
