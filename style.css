@@ -1,44 +1,14 @@
-.container {
+/* Стили для контейнера плеера */
+.player-container {
+  position: relative;
+}
+
+/* Стили для видео */
+video {
   width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
 }
 
-.score {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.board {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.card {
-  width: 100px;
-  height: 100px;
-  background-color: #ddd;
+/* Стили для кнопок управления */
+button {
   margin: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease-in-out;
-}
-
-.card.flipped {
-  background-color: #fff;
-}
-
-.start-button {
-  padding: 10px 20px;
-  font-size: 18px;
-  font-weight: bold;
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 }
