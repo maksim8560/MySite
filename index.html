@@ -1,129 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Онлайн-чат</title>
-	<style type="text/css">
-		body {
-			margin: 0;
-			padding: 0;
-			font-family: Arial, sans-serif;
-			background-color: #f1f1f1;
-		}
-
-		#chat-container {
-			height: 400px;
-			overflow-y: scroll;
-			display: flex;
-			flex-direction: column;
-			padding: 10px;
-			background-color: #fff;
-		}
-
-		.chat-message {
-			margin-bottom: 10px;
-			padding: 5px;
-			border-radius: 10px;
-			max-width: 80%;
-			align-self: flex-start;
-			background-color: #dcdcdc;
-		}
-
-		.chat-message.other-user {
-			align-self: flex-end;
-			background-color: #06c;
-			color: #fff;
-		}
-
-		form {
-			display: flex;
-			flex-wrap: wrap;
-			margin-top: 10px;
-		}
-
-		input[type=text] {
-			flex-grow: 1;
-			padding: 5px;
-			border-radius: 5px;
-			border: none;
-			box-shadow: none;
-			background-color: #f1f1f1;
-			margin-right: 10px;
-			margin-bottom: 10px;
-		}
-
-		button[type=submit] {
-			margin-left: auto;
-			padding: 5px 10px;
-			border-radius: 5px;
-			border: none;
-			box-shadow: none;
-			background-color: #06c;
-			color: #fff;
-			cursor: pointer;
-		}
-
-		button[type=submit]:hover {
-			background-color: #003c6e;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <title>Красивый сайт с анимацией</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-	<div id="chat-container"></div>
-	<form id="message-form">
-		<input type="text" name="username" placeholder="Введите ваше имя...">
-		<input type="text" name="message" placeholder="Введите сообщение...">
-		<button type="submit">Отправить</button>
-	</form>
+  <button class="menu-button">&#9776;</button>
 
-	<script type="text/javascript">
-		const socket = new WebSocket('ws://localhost:3000');
-		const chatContainer = document.querySelector('#chat-container');
-		const messageForm = document.querySelector('#message-form');
+  <div class="menu">
+    <a href="#">Ссылка 1</a>
+    <a href="#">Ссылка 2</a>
+    <a href="#">Ссылка 3</a>
+    <a href="#">Ссылка 4</a>
+  </div>
 
-		// Функция добавления сообщения в контейнер
-		function addMessageToContainer(message, isOtherUser) {
-			const messageElement = document.createElement('div');
-			messageElement.innerText = message;
-			messageElement.classList.add('chat-message');
-
-			if (isOtherUser) {
-				messageElement.classList.add('other-user');
-			}
-
-			chatContainer.appendChild(messageElement);
-
-			// Автопрокрутка до последнего сообщения
-			chatContainer.scrollTop = chatContainer.scrollHeight;
-		}
-
-		// Обработчик отправки сообщения
-		messageForm.addEventListener('submit', (event) => {
-			event.preventDefault();
-
-			const usernameInput = messageForm.querySelector('input[name="username"]');
-			const messageInput = messageForm.querySelector('input[name="message"]');
-
-			const username = usernameInput.value;
-			const messageText = messageInput.value;
-
-			// Отправка сообщения на сервер
-			socket.send(JSON.stringify({ username, messageText }));
-
-			// Добавление сообщения в контейнер
-			addMessageToContainer(`${username}: ${messageText}`);
-
-			// Очистка полей ввода
-			usernameInput.value = '';
-			messageInput.value = '';
-		});
-
-		// Обработчик получения сообщения от сервера
-		socket.addEventListener('message', (event) => {
-			const { username, messageText } = JSON.parse(event.data);
-
-			// Добавление сообщения в контейнер с меткой "other-user"
-			addMessageToContainer(`${username}: ${messageText}`, true);
-		});
-	</script>
+  <script src="script.js"></script>
 </body>
 </html>
