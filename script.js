@@ -1,79 +1,32 @@
-const cards = document.querySelectorAll('.card');
-const startButton = document.querySelector('.start-button');
-const scoreDisplay = document.querySelector('.score');
+// Получаем элементы плеера
+const videoElement = document.querySelector('video');
+const playPauseButton = document.querySelector('#play-pause-button');
+const volumeSlider = document.querySelector('#volume-slider');
+const muteUnmuteButton = document.querySelector('#mute-unmute-button');
 
-let hasFlippedCard = false;
-let lockBoard = false;
-let firstCard, secondCard;
-let score = 0;
-
-function flipCard() {
-  if (lockBoard) return;
-  if (this === firstCard) return;
-
-  this.classList.add('flipped');
-
-  if (!hasFlippedCard) {
-    // Первая карта
-    hasFlippedCard = true;
-    firstCard = this;
-
-    return;
+// Обработчик нажатия на кнопку воспроизведения/приостановления
+playPauseButton.addEventListener('click', () => {
+  if (videoElement.paused) {
+    videoElement.play();
+    playPauseButton.textContent = 'Приостановить';
+  } else {
+    videoElement.pause();
+    playPauseButton.textContent = 'Воспроизвести';
   }
+});
 
-  // Вторая карта
-  secondCard = this;
+// Обработчик изменения громкости
+volumeSlider.addEventListener('input', () => {
+  videoElement.volume = volumeSlider.value;
+});
 
-  checkForMatch();
-}
-
-function checkForMatch() {
-  let isMatch = firstCard.dataset.value === secondCard.dataset.value;
-
-  isMatch ? disableCards() : unflipCards();
-}
-
-function disableCards() {
-  firstCard.removeEventListener('click', flipCard);
-  secondCard.removeEventListener('click', flipCard);
-
-  resetBoard();
-
-  score++;
-  scoreDisplay.innerHTML = `Score: ${score}`;
-}
-
-function unflipCards() {
-  lockBoard = true;
-
-  setTimeout(() => {
-    firstCard.classList.remove('flipped');
-    secondCard.classList.remove('flipped');
-
-    resetBoard();
-  }, 1000);
-}
-
-function resetBoard() {
-  [hasFlippedCard, lockBoard] = [false, false];
-  [firstCard, secondCard] = [null, null];
-}
-
-function shuffleCards() {
-  cards.forEach(card => {
-    let randomPos = Math.floor(Math.random() * 8);
-    card.style.order = randomPos;
-  });
-}
-
-function startGame() {
-  shuffleCards();
-
-  cards.forEach(card => {
-    card.addEventListener('click', flipCard);
-  });
-
-  startButton.style.display = 'none';
-}
-
-startButton.addEventListener('click', startGame);
+// Обработчик нажатия на кнопку выключения/включения звука
+muteUnmuteButton.addEventListener('click', () => {
+  if (videoElement.muted) {
+    videoElement.muted = false;
+    muteUnmuteButton.textContent = 'Выключить звук';
+  } else {
+    videoElement.muted = true;
+    muteUnmuteButton.textContent = 'Включить звук';
+  }
+});
