@@ -1,70 +1,77 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Авторизация</title>
-</head>
-<body>
-	<h1>Оператор КЦ</h1>
-	
-	<form id="login-form">
-		<label for="password">Введите пароль:</label>
-		<input type="password" id="password" name="password">
-		<button type="submit">Войти</button>
-	</form>
-
-	<script>
-	const password = "5467";
-	const form = document.getElementById("login-form");
-
-	form.addEventListener("submit", function(e) {
-		e.preventDefault();
-		if (form.password.value === password) {
-			alert("Login successful!");
-			window.location.href = "main.html"; // Redirect to main page
-		} else {
-			alert("Incorrect password. Please try again.");
-		}
-	});
-</script>
-<style>
-	form {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		margin-top: 50px;
-	}
-
-	label {
-		font-size: 18px;
-		margin-bottom: 10px;
-	}
-
-	input[type="password"] {
-		padding: 10px;
-		border: none;
-		border-radius: 5px;
-		box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
-		width: 300px;
-		max-width: 100%;
-	}
-
-	button[type="submit"] {
-		background-color: #007bff;
-		color: white;
-		padding: 12px 20px;
-		border: none;
-		border-radius: 5px;
-		font-size: 16px;
-		cursor: pointer;
-		margin-top: 20px;
-		box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
-	}
-
-	button[type="submit"]:hover {
-		background-color: #0062cc;
-		transition-duration: 0.3s;
-	}
-</style>
-
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+    <style>
+      body {
+        background-color: #f2f2f2;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+        text-align: center;
+      }
+      h1 {
+        color: #333;
+      }
+      input[type="password"] {
+        padding: 10px;
+  	border-radius: 5px;
+  	border: 2px solid black; /* изменение цвета и толщины границы */
+  	margin-top: 20px;
+  	width: 90%;
+  	background-color: #fff;
+	color: black;
+      }
+      button {
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        margin-top: 20px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #3e8e41;
+      }
+      .error-message {
+        color: red;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Авторизация</h1>
+      <form id="auth-form">
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="password">
+        <button type="submit">Войти</button>
+      </form>
+      <div id="error-message" class="error-message"></div>
+    </div>
+    
+    <script>
+      const form = document.getElementById('auth-form');
+      const passwordInput = document.getElementById('password');
+      const errorMessage = document.getElementById('error-message');
+      
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        
+        if (passwordInput.value === '5436') {
+          window.location.href = 'https://maksim8560.github.io/MySite/main.html';
+        } else {
+          errorMessage.innerText = 'Пароль неверный. Попробуйте еще раз.';
+        }
+      });
+    </script>
+  </body>
 </html>
