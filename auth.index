@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Авторизация</title>
+</head>
+<body>
+	<h1>Войдите</h1>
+	
+	<form id="login-form">
+		<label for="password">Enter password:</label>
+		<input type="password" id="password" name="password">
+		<button type="submit">Login</button>
+	</form>
+
+	<script>
+	const password = "5467";
+	const form = document.getElementById("login-form");
+
+	form.addEventListener("submit", function(e) {
+		e.preventDefault();
+		if (form.password.value === password) {
+			alert("Login successful!");
+			window.location.href = "main.html"; // Redirect to main page
+		} else {
+			alert("Incorrect password. Please try again.");
+		}
+	});
+</script>
+<style>
+	form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-top: 50px;
+	}
+
+	label {
+		font-size: 18px;
+		margin-bottom: 10px;
+	}
+
+	input[type="password"] {
+		padding: 10px;
+		border: none;
+		border-radius: 5px;
+		box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+		width: 300px;
+		max-width: 100%;
+	}
+
+	button[type="submit"] {
+		background-color: #007bff;
+		color: white;
+		padding: 12px 20px;
+		border: none;
+		border-radius: 5px;
+		font-size: 16px;
+		cursor: pointer;
+		margin-top: 20px;
+		box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+	}
+
+	button[type="submit"]:hover {
+		background-color: #0062cc;
+		transition-duration: 0.3s;
+	}
+</style>
+
+</body>
+</html>
