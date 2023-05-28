@@ -15,5 +15,115 @@
     </div>
   </div>
 </div>
+
 </body>
 </html>
+
+<style>
+/* Стили для контейнера с окном */
+		#google-docs {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 1300px;
+			height: 930px;
+			background-color: white;
+			border: 1px solid black;
+			overflow: hidden;
+		}
+
+		/* Стили для iframe */
+		iframe {
+			width: 100%;
+			height: 100%;
+		}
+
+    /* Стили для меню */
+    #menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    #menu-button {
+      padding: 10px 12px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      margin-right: 10px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    #menu-button:hover {
+      background-color: #555;
+      transition-duration: 0.3s;
+    }
+
+    #menu-links {
+      display: none;
+      position: absolute;
+      top: 50px; /* расстояние от верха страницы до выпадающего списка */
+      right: 0;
+      background-color: white;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      padding: 10px;
+      max-height: 350px;
+      overflow-y: auto;
+    }
+
+    #menu-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #menu-links li {
+      margin-bottom: 10px;
+    }
+
+    #menu-links a {
+      color: black;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    #menu-links a:hover {
+      color: #333;
+    }
+    
+    
+    
+</style>
+<script>
+		var menuButton = document.getElementById("menu-button");
+		var menuLinks = document.getElementById("menu-links");
+
+		menuButton.addEventListener("click", function() {
+		  if (menuLinks.style.display === "block") {
+		    menuLinks.style.display = "none";
+		  } else {
+		    menuLinks.style.display = "block";
+		  }
+		});
+		
+				const password = "5467";
+		const form = document.getElementById("login-form");
+
+		form.addEventListener("submit", function(e) {
+			e.preventDefault();
+			if (form.password.value === password) {
+				alert("Login successful!");
+				// Add code here to show the rest of the page content or redirect to another page
+			} else {
+				alert("Incorrect password. Please try again.");
+			}
+		});
+</script>
