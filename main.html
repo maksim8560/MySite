@@ -1,129 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script type="text/javascript">
+      document.write(
+        '<link rel="stylesheet" href="css/main.css?' + Math.random() + '">'
+      );
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Condensed|Ubuntu+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link rel="stylesheet" href="css/main.css" /> -->
+    <title>Loading Screen | MaxDiWay</title>
+  </head>
+  <body>
+    <div class="background"></div>
+    <div class="overhaul"></div>
 
-<body>
-		<div id="google-docs">
-		<iframe src="https://docs.google.com/spreadsheets/d/1ZCTkSchNMazSR0I0EVx6XKPviULv6O9omg-ofwFxI-Y/edit#gid=1708656462"></iframe>
-	</div>
+    <nav>
+      <div id="announcement"></div>
+      <span id="map">Вы играете на </span>
+      <span id="steamid"></span>
+    </nav>
 
-  <div id="menu">
-    <a href="#" id="menu-button">Меню</a>
-    <div id="menu-links">
-      <ul>
-        <li><a href="https://www.dns-shop.ru/service-center/search/"><h1>сц</h1></a></li>
-        <li><a href="https://www.dns-shop.ru/shops/blagoveshensk/"><h1>Магазины</h1></h1></a></li>
-        <li><a href="http://crm.dns-shop.ru/asterisk/call/index/"><h1>CRM</h1></a></li>
-      </ul>
-    </div>
-  </div>
-</div>
+    <div id="debug"></div>
 
-</body>
+    <main>
+      <div class="title">
+        <h2>Добро пожаловать на,</h2>
+        <h1 id="title"></h1>
+        <div id="history"></div>
+      </div>
+      <div class="under-nav"></div>
+      <div class="loading-box"></div>
+    </main>
+
+    <script src="js/lib/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+      document.write(
+        '<script src="js/config.js?' + Math.random() + '"><\/script>'
+      );
+      document.write(
+        '<script src="js/main.js?' + Math.random() + '"><\/script>'
+      );
+    </script>
+    <!-- <script src="config.js"></script> -->
+    <!-- <script src="js/main.js"></script> -->
+  </body>
 </html>
-
-<style>
-/* Стили для контейнера с окном */
-		#google-docs {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 1300px;
-			height: 930px;
-			background-color: white;
-			border: 1px solid black;
-			overflow: hidden;
-		}
-
-		/* Стили для iframe */
-		iframe {
-			width: 100%;
-			height: 100%;
-		}
-
-    /* Стили для меню */
-    #menu {
-      position: fixed;
-      top: 0;
-      right: 0;
-      display: flex;
-      align-items: center;
-    }
-
-    #menu-button {
-      padding: 10px 12px;
-      background-color: #333;
-      color: white;
-      border: none;
-      border-radius: 25px;
-      font-size: 16px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      margin-right: 10px;
-      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    #menu-button:hover {
-      background-color: #555;
-      transition-duration: 0.3s;
-    }
-
-    #menu-links {
-      display: none;
-      position: absolute;
-      top: 50px; /* расстояние от верха страницы до выпадающего списка */
-      right: 0;
-      background-color: white;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;
-      padding: 10px;
-      max-height: 350px;
-      overflow-y: auto;
-    }
-
-    #menu-links ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    #menu-links li {
-      margin-bottom: 10px;
-    }
-
-    #menu-links a {
-      color: black;
-      text-decoration: none;
-      font-size: 16px;
-    }
-
-    #menu-links a:hover {
-      color: #333;
-    }
-    
-    
-    
-</style>
-<script>
-		var menuButton = document.getElementById("menu-button");
-		var menuLinks = document.getElementById("menu-links");
-
-		menuButton.addEventListener("click", function() {
-		  if (menuLinks.style.display === "block") {
-		    menuLinks.style.display = "none";
-		  } else {
-		    menuLinks.style.display = "block";
-		  }
-		});
-		
-				const password = "5467";
-		const form = document.getElementById("login-form");
-
-		form.addEventListener("submit", function(e) {
-			e.preventDefault();
-			if (form.password.value === password) {
-				alert("Login successful!");
-				// Add code here to show the rest of the page content or redirect to another page
-			} else {
-				alert("Incorrect password. Please try again.");
-			}
-		});
-</script>
