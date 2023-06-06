@@ -5,6 +5,11 @@ body {
   background-color: black;
 }
 
+#audio {
+    display: none;
+}
+
+
 nav,
 main {
   display: none;
