@@ -17,6 +17,10 @@
     <title>Loading Screen | MaxDiWay</title>
   </head>
   <body>
+    
+    <audio id="music" autoplay >
+    <source src="music/<?php echo $scan[$random]; ?>" type="audio/mpeg">
+    </audio> 
 
     <div class="background"></div>
     <div class="overhaul"></div>
@@ -51,7 +55,4 @@
     <!-- <script src="config.js"></script> -->
     <!-- <script src="js/main.js"></script> -->
   </body>
-  <audio id="music" autoplay >
-    <source src="music/<?php echo $scan[$random]; ?>" type="audio/mpeg">
-</audio> 
 </html>
