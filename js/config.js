@@ -43,7 +43,7 @@ Config.announcementLength = 5000;
  * Image Filename
  * DROP IMAGE IN "images" FOLDER
  */
-Config.backgroundImage = "image2.jpg";
+Config.backgroundImage = "image2.png";
 
 /**
  * Enable debug messages?
