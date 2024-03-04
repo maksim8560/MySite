@@ -5,7 +5,7 @@ var Config = {};
  * What should the text in the center of the screen be?
  * if empty it will fill in your Server Name
  */
-Config.title = "MAJESTIC RP";
+Config.title = "Military | Post-Apocalypse | RP +";
 
 /**
  * Enable map text in the top left corner of the screen?
@@ -43,7 +43,7 @@ Config.announcementLength = 5000;
  * Image Filename
  * DROP IMAGE IN "images" FOLDER
  */
-Config.backgroundImage = "default.jpg";
+Config.backgroundImage = "image2.jpg";
 
 /**
  * Enable debug messages?
