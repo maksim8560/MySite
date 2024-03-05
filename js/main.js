@@ -182,7 +182,7 @@ $(document).ready(function() {
       GameDetails(
         "Servername",
         "Serverurl",
-        "Mapname",
+        "Mapname ",
         "Maxplayers",
         "SteamID",
         "Gamemode"
