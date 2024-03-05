@@ -182,7 +182,7 @@ $(document).ready(function() {
       GameDetails(
         "Servername",
         "Serverurl",
-        "Карте ",
+        "Карте: ",
         "Maxplayers",
         "SteamID",
         "Gamemode"
